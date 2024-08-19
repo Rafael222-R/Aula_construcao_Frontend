@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+
+    <link rel="stylesheet" href="./Styles/Style.css">
+
+</head>
+<body>
+    <h1> Cadastro de Usuário </h1>
+    <form>
+        <label for="Nome">Nome: </label>
+        <input type="text" placeholder="" name="nome">
+
+        <br>
+        <br>
+
+        <label for="telefone">Telefone: </label>
+        <input type="number" plasceholde="" nome="telefone">
+
+        <br>
+        <br>
+
+        <label for="email">Email: </label>
+        <input type="email" placeholder="" nome="email">
+
+        <br>
+        <br>
+
+        <label for="Senha">Senha: </label>
+        <input type="number" placeholder="" nome="Senha">
+
+        <br>
+        <br>
+
+<h> Sexo:</h>
+        <input type="radio" id="Masculino" name="Sexo" value="Masculino">
+        <label for="Masculino">Masculino</label>
+        <input type="radio" id="feminino" name="genero" value="feminino">
+        <label for="feminino">Feminino</label>
+
+        <br>
+        <br>
+
+        <label for="UF">UF</label>
+        <select id="UF" name="UF">
+            <option value="DF">DF</option>
+            <option value="MG">MG</option>
+            <option value="BA">BA</option>
+        </select>
+        <br>
+        <br>
+
+<h> Hobbies</h>
+        <fieldset>
+                <input type="checkbox" id="Futebol" name="Hobbies" value="Futebol">
+                <label for="Futebol">Futebol</label>
+
+                <input type="checkbox" id="Xadrez" name="Hobbies" value="Xadrez">
+                <label for="Xadrez">Xadrez</label>
+
+                <input type="checkbox" id="Esportes" name="Hobbies" value="Espotes">
+                <label for="Esportes">Esportes</label>
+
+                <input type="checkbox" id="Musica" name="Hobbies" value="Musica">
+                <label for="Musica">Musica</label>
+
+                <input type="checkbox" id="Cinema" name="Hobbies" value="Cinema">
+                <label for="Cinema"> Cinema</label>
+
+                <input type="checkbox" id="Leitura" name="Hobbies" value="Leitura">
+                <label for="Leitura">Leitura</label>
+        </fieldset>
+
+        <br>
+
+        <label for="Observação">Observação:</label>
+        <textarea class="altura-largura" name="Observação" placeholder=""></textarea>
+
+        <br>
+        <br>
+
+    <button type="menu">Voltar</button>
+    <button type="reset">Limpar</button>
+    <button type="submit">Salvar</button>
+
+
+
+
+    </form>
+    
+</body>
+</html>
