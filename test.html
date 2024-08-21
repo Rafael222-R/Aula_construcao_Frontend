@@ -1,147 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabela Simples</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f4f4f4;
-        }
-    </style>
-</head>
-<body>
 
-    <h1>Tabela com 3 Colunas e 6 Linhas</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Coluna 1</th>
-                <th>Coluna 2</th>
-                <th>Coluna 3</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Linha 1, Coluna 1</td>
-                <td>Linha 1, Coluna 2</td>
-                <td>Linha 1, Coluna 3</td>
-            </tr>
-            <tr>
-                <td>Linha 2, Coluna 1</td>
-                <td>Linha 2, Coluna 2</td>
-                <td>Linha 2, Coluna 3</td>
-            </tr>
-            <tr>
-                <td>Linha 3, Coluna 1</td>
-                <td>Linha 3, Coluna 2</td>
-                <td>Linha 3, Coluna 3</td>
-            </tr>
-            <tr>
-                <td>Linha 4, Coluna 1</td>
-                <td>Linha 4, Coluna 2</td>
-                <td>Linha 4, Coluna 3</td>
-            </tr>
-            <tr>
-                <td>Linha 5, Coluna 1</td>
-                <td>Linha 5, Coluna 2</td>
-                <td>Linha 5, Coluna 3</td>
-            </tr>
-            <tr>
-                <td>Linha 6, Coluna 1</td>
-                <td>Linha 6, Coluna 2</td>
-                <td>Linha 6, Coluna 3</td>
-            </tr>
-        </tbody>
-    </table>
-
-</body>
-</html>
-
-
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabela com Subtítulos</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f4f4f4;
-        }
-    </style>
-</head>
-<body>
-
-    <h1>Tabela com Subtítulos nas Colunas 2 e 3</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Coluna 1</th>
-                <th colspan="2">Grupo de Colunas</th>
-            </tr>
-            <tr>
-                <th></th>
-                <th>Subtítulo 1</th>
-                <th>Subtítulo 2</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Linha 1, Coluna 1</td>
-                <td>Linha 1, Subtítulo 1</td>
-                <td>Linha 1, Subtítulo 2</td>
-            </tr>
-            <tr>
-                <td>Linha 2, Coluna 1</td>
-                <td>Linha 2, Subtítulo 1</td>
-                <td>Linha 2, Subtítulo 2</td>
-            </tr>
-            <tr>
-                <td>Linha 3, Coluna 1</td>
-                <td>Linha 3, Subtítulo 1</td>
-                <td>Linha 3, Subtítulo 2</td>
-            </tr>
-            <tr>
-                <td>Linha 4, Coluna 1</td>
-                <td>Linha 4, Subtítulo 1</td>
-                <td>Linha 4, Subtítulo 2</td>
-            </tr>
-            <tr>
-                <td>Linha 5, Coluna 1</td>
-                <td>Linha 5, Subtítulo 1</td>
-                <td>Linha 5, Subtítulo 2</td>
-            </tr>
-            <tr>
-                <td>Linha 6, Coluna 1</td>
-                <td>Linha 6, Subtítulo 1</td>
-                <td>Linha 6, Subtítulo 2</td>
-            </tr>
-        </tbody>
-    </table>
-
-</body>
-</html>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -153,11 +10,14 @@
         table {
             width: 100%;
             border-collapse: collapse;
+            align-items: center;
         }
         th, td {
+            
             border: 1px solid black;
             padding: 8px;
             text-align: center;
+            
         }
         th {
             background-color: #f4f4f4;
@@ -170,7 +30,7 @@
 
     <h1>Tabela de Contatos</h1>
 
-    <table>
+    <table border="4">
         <thead>
             <tr>
                 <th rowspan="2">Nome</th>
