@@ -4,6 +4,7 @@ import NumeroMaior from "./NumeroMaior";
 import NumeroAleatorio from "./NumeroAleatorio";
 import Cabecalho from "./Cabecalho";
 import Familia from "./Familia";
+import Filho from "./Filho";
 
 
 
@@ -36,8 +37,9 @@ export default function Fundamentos() {
 
         <hr/>
 
-        <Familia nomeFamilia="Soares"> </Familia>
-
+        <Familia nomeFamilia="Soares"> 
+            <Filho nome="Rafael" sobrenome="dias"> </Filho>
+        </Familia>
 
 
          </>
