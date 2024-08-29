@@ -1,16 +1,20 @@
 
 import MeuComponete from "./MeuComponente";
 import NumeroMaior from "./NumeroMaior";
-
-
+import NumeroAleatorio from "./NumeroAleatorio";
+import Cabecalho from "./Cabecalho";
+import Familia from "./Familia";
 
 
 
 export default function Fundamentos() {
     return (
         <>
-        
-        <h1>Pagina Fundamentos</h1>
+         
+         {/* Comentarios no JSX */}
+        <Cabecalho titulo="Fundamentos" descricao="Pagina de fundamentos de React/NEXt"/>
+
+
         <hr/>
         <MeuComponete/>
         <hr/>
@@ -22,6 +26,22 @@ export default function Fundamentos() {
         <NumeroMaior numA={53} numB={92} />
         <NumeroMaior numA={51} numB={23} />
 
+        <hr/>
+
+        <NumeroAleatorio />
+        <NumeroAleatorio />
+        <NumeroAleatorio />
+        <NumeroAleatorio />
+        <NumeroAleatorio />
+
+        <hr/>
+
+        <Familia nomeFamilia="Soares"> </Familia>
+
+
+
          </>
+
+
     )
 }
