@@ -5,6 +5,7 @@ import NumeroAleatorio from "./NumeroAleatorio";
 import Cabecalho from "./Cabecalho";
 import Familia from "./Familia";
 import Filho from "./Filho";
+import ImagemAleatoria from "./ImagemAleatoria";
 
 
 
@@ -37,9 +38,27 @@ export default function Fundamentos() {
 
         <hr/>
 
-        <Familia nomeFamilia="Soares"> 
-            <Filho nome="Rafael" sobrenome="dias"> </Filho>
-        </Familia>
+        <Familia nomeFamilia="Soares">
+                <Filho nome="Rafael" sobreNome="Dias" />
+                <Filho nome="Erica" sobreNome="Dias" />
+                <Filho nome="Maria" sobreNome="Soares" />
+                <Filho nome="Jorge" sobreNome="Soares" />
+            </Familia>
+
+            <Familia nomeFamilia="Xororô">
+                <Filho nome="Sandy" sobreNome="Xororô"></Filho>
+                <Filho nome="Junior" sobreNome="Xororô"></Filho>
+            </Familia>
+
+            <hr />
+
+            <ImagemAleatoria />
+            <ImagemAleatoria />
+            <ImagemAleatoria />
+            <ImagemAleatoria />
+            <ImagemAleatoria />
+            <ImagemAleatoria />
+            <ImagemAleatoria />
 
 
          </>
