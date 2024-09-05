@@ -1,0 +1,19 @@
+
+body{
+    padding: 20px;
+    font-family:arial;
+    color:cornflowerblue
+  
+
+}
+.h1{
+    text-align: center;
+    font-family: Verdana;
+}
+
+
+.mb-3{
+    
+   display:grid;
+   text-align: left
+}
