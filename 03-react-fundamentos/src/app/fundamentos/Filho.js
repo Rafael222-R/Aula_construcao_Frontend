@@ -2,9 +2,9 @@
 
 export default function Filho(props) {
 
-  const { nome, sobreNome } = props
+    const { nome, sobreNome } = props
 
-  return (
-      <p>{nome} {sobreNome}</p>
-  )
+    return (
+        <p>{nome} {sobreNome}</p>
+    )
 }

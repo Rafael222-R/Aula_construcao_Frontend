@@ -1,3 +1,5 @@
+
+
 export default function ImagemAleatoria() {
 
     const numeroAleatorio = Math.round(Math.random() * 200) + 1
