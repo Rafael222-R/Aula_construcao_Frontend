@@ -1,9 +1,10 @@
 'use client'
 
+
 import { useEffect, useState } from "react";
-import apiFilmes from "../apis/apiFilmes";
-import Pagina from "../Components/Pagina";
 import { Row, Col, Card, Button } from "react-bootstrap";
+import apiFilmes from "@/app/apis/apiFilmes";
+import Pagina from "@/app/Components/Pagina";
 
 
 export default function page() {
@@ -18,7 +19,7 @@ export default function page() {
     }, [])
 
    async function buscarFilmes(){
-        const resultado = await apiFilmes.get("/movie/popular?language=pt-BR")
+        const resultado = await apiFilmes.get("/movie/top_rated?language=pt-BR")
         console.log(resultado.data.results)
         const filmesRecebidos = resultado.data.results
         setFilmes(filmesRecebidos)
