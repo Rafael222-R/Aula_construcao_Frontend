@@ -7,4 +7,4 @@ const apiSerie = axios.create({
     }
 })
 
-export default apiFilmes
+export default apiSerie

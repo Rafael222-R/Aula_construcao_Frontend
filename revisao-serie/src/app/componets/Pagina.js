@@ -12,10 +12,10 @@ export default function Pagina(props) {
             {/* Barra de Navegação */}
             <Navbar bg="dark" data-bs-theme="dark">
                 <Container>
-                    <Navbar.Brand href="/filmes">Movies</Navbar.Brand>
+                    <Navbar.Brand href="/serie">Series</Navbar.Brand>
                     <Nav className="me-auto">
-                        <Nav.Link href="/filmes">Filmes</Nav.Link>
-                        <Nav.Link href="/atores">Atores</Nav.Link>
+                        <Nav.Link href="/melhores">Serie Melhor Avaliada</Nav.Link>
+                        <Nav.Link href="/naTV">Na TV</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
