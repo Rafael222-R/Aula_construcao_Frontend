@@ -35,10 +35,11 @@ async function buscarSerie() {
 
 
                     <Col m={6}>
-                        <p><b>Orcamento: </b>{serie.revenue} $</p>
+                        
                         <p><b>Data de Lancamento:</b>{serie.first_air_date}</p>
-                        <p><b>Duração: </b>{serie.episode_run_time} min </p>
                         <p><b>Nota: </b>{serie.vote_average} ★</p>
+                        <p><b>Quantidade de Temporadas: </b>{serie.number_of_seasons} </p>
+                        <p><b>Quantidade de episodios: </b>{serie.number_of_episodes} </p>
                         <p><b>Generos:  </b></p>
                         <ul>
                             {serie.genres.map(item => {
