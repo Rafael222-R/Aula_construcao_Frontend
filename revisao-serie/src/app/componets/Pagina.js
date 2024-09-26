@@ -16,6 +16,7 @@ export default function Pagina(props) {
                     <Nav className="me-auto">
                         <Nav.Link href="/melhores">Serie Melhor Avaliada</Nav.Link>
                         <Nav.Link href="/naTV">Na TV</Nav.Link>
+                        <Nav.Link href="/exibicao">Exibidas Hoje</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
