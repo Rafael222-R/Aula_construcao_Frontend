@@ -27,7 +27,7 @@ export default function Pagina(props) {
             </div>
 
             {/* Filhos -> Código da Página */}
-            <Container className='mt-2'>
+           <Container className='mt-2'>
                 {props.children}
             </Container>
 
