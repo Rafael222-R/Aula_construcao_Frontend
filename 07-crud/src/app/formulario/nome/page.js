@@ -3,6 +3,9 @@
 import Pagina from '@/componets/Pagina'
 import React, { useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
+import { FaCheck } from "react-icons/fa";
+import { FaRegTrashAlt } from "react-icons/fa";
+
 
 export default function FormularioNomePage() {
 
@@ -71,8 +74,8 @@ export default function FormularioNomePage() {
                     <Form.Text> Informe o seu Email</Form.Text>
             </Form.Group>
 
-            <Button type='submit'> Enviar </Button>
-            <Button  onClick={reset}> Limpar</Button>
+            <Button type='submit' className='me-2'><FaCheck /> Enviar </Button>
+            <Button  onClick={reset}><FaRegTrashAlt /> Limpar</Button>
 
 
 
