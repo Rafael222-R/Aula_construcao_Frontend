@@ -102,9 +102,9 @@ export default function ConversaoPage() {
             onChange={e => { setConverter(e.target.value) }}
           >
             <option>Selecione</option>
-            <option value='dolar'>Dólar</option>
-            <option value='euro'>Euro</option>
-            <option value='bitcoin'>Bitcoin</option>
+            <option value='dolar'>Dólar 💵</option>
+            <option value='euro'>Euro € </option>
+            <option value='bitcoin'>Bitcoin ₿</option>
 
           </Form.Select>
           <Form.Text>Selecione uma Moeda. Ex: Bitcoin</Form.Text>
