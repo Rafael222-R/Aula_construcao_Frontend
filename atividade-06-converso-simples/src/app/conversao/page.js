@@ -32,7 +32,7 @@ export default function ConversaoPage() {
     if (converter === 'dolar') {
       valorConvertido = (valor * dolar).toFixed(1);
     } else if (converter === 'euro') {
-      valorConvertido = (valor * euro).toFixed(1);
+      valorConvertido = (valor * euro).toFixed(2);
     } else if (converter === 'bitcoin') {
       valorConvertido = (valor * bitcoin);
     } else {
@@ -64,7 +64,7 @@ export default function ConversaoPage() {
     } else if (converter === 'bitcoin') {
       return '/img/bitcoin.jpeg';
     } else {
-      return ''; // Nenhuma imagem se nenhuma moeda for selecionada
+      return ''; 
     }
   }
 
@@ -122,8 +122,7 @@ export default function ConversaoPage() {
           <Modal.Title>Resultado</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Valor é: {resultado}</p>
-          <p>A Moeda é: {converter}</p>
+          <p>A Moeda escolhida é  {converter}: R$ {valor} Real = {resultado} {converter}</p>
           {/* Exibir a imagem da moeda selecionada */}
       {converter && (
           <div className="my-3">
