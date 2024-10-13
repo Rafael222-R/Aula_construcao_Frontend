@@ -81,6 +81,8 @@ export default function page() {
                             <Form.Control
                                 type='number'
                                 name='valor'
+                                min={1}
+                                step={0.01}
                                 value={values.valor}
                                 onChange={handleChange}
 
