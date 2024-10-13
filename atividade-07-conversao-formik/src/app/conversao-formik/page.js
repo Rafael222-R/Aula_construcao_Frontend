@@ -93,7 +93,9 @@ export default function page() {
                             <Form.Select
                                 name='moeda'
                                 value={values.moeda}
-                                onChange={handleChange}
+                                onChange={(e) => {handleChange(e);
+                                    setmoeda(e.target.value)
+                                }}
                             >
                                 <option value={''}>Selecione</option>
                                 <option value={'dolar'}>Dólar 💵</option>
