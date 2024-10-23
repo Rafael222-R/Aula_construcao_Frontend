@@ -97,31 +97,42 @@ export default function ImovelPage() {
                         <Row className='mb-2'>
                             <Form.Group as={Col}>
                                 <Form.Label>Tipo do Imovel:</Form.Label>
-                                <Form.Control
+                                <Form.Select
                                     name='tipo'
-                                    type='text'
                                     value={values.tipo}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     isValid={touched.tipo && !errors.tipo}
                                     isInvalid={touched.tipo && !!errors.tipo}
 
-                                />
+                                >
+
+                                    <option value=''>Selecione</option>
+                                    <option value='Casa'>Casa</option>
+                                    <option value='Apartamento'>Apartamento</option>
+                                    <option value='Terreno'>Terreno</option>
+                                    <option value='Sala Comercial'>Sala Comercial</option>
+                                </Form.Select>
                                 <Form.Control.Feedback type='invalid'>{errors.tipo}</Form.Control.Feedback>
 
                             </Form.Group>
 
                             <Form.Group as={Col}>
                                 <Form.Label>Finalidade:</Form.Label>
-                                <Form.Control
+                                <Form.Select
                                     name='finalidade'
-                                    type='text'
                                     value={values.finalidade}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     isValid={touched.finalidade && !errors.finalidade}
-                                    isInvalid={touched.finalidade && !!errors.finalidade}
-                                />
+                                    isInvalid={touched.finalidade && !! errors. finalidade}
+                                >
+                                    <option value=''>Selecione</option>
+                                    <option value='Venda'>Venda</option>
+                                    <option value='Aluguel'>Aluguel</option>
+
+                                </Form.Select>
+                                
                                 <Form.Control.Feedback type="invalid">{errors.finalidade}</Form.Control.Feedback>
                             </Form.Group>
                         </Row>
@@ -456,3 +467,4 @@ export default function ImovelPage() {
         </PaginaPage>
     )
 }
+
