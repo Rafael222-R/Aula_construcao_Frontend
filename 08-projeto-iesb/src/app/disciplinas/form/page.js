@@ -74,7 +74,7 @@ export default function disciplinasFormPage(props) {
 
             <Formik
 
-                initialValues={initialValues}
+                initialValues={disciplinaEditada || initialValues}
                 validationSchema={validationSchema}
                 onSubmit={salvar}
 
@@ -176,7 +176,7 @@ export default function disciplinasFormPage(props) {
 
                                 
 
-                                    <Form.Group >
+                                    <Form.Group className='text-end'>
                                         <Button className='me-2' variant='secondary' href='/disciplinas'> <FaArrowLeft /> Voltar</Button>
                                         <Button  className='text-end me-2' onClick={handleReset}> <FaTrash /> Limpar</Button>
                                         <Button className='text-end me-2'type='submit' variant='success'> <FaCheck /> Enviar</Button>

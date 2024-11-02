@@ -58,7 +58,7 @@ export default function disciplinaPage() {
                 <td>{disciplina.professor}</td>
                 <td className='text-center'>
                   {/* Botões das ações */}
-                  <Button className='me-2' href={`/disciplina/form?id=${disciplina.id}`}><FaPen /></Button>
+                  <Button className='me-2' href={`/disciplinas/form?id=${disciplina.id}`}><FaPen /></Button>
                   <Button variant='danger' onClick={() => excluir(disciplina)}><FaTrash /></Button>
 
                 </td>
