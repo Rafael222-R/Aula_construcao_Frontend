@@ -17,6 +17,19 @@ export default function page() {
     }, [])
 
 
+    function excluir(aluno) {
+      if(window.confirm(`Deseja Realmente Excluir a Aluno ${aluno.nome}?`)) {
+        const novaLista = alunos.filter(item => item.id !== aluno.id)
+
+        localStorage.setItem('alunos',JSON.stringify(novaLista))
+      
+      setAlunos(novaLista)
+      alert("Aluno Excluido com Sucesso!")
+    }
+      
+    }
+
+
 
   return (
   <Pagina titulo={'Lista de Alunos'}>
@@ -30,9 +43,9 @@ export default function page() {
             <th>Foto</th>
             <th>Matricula</th>
             <th>Nome </th>
-            <th>sobrenome</th>
-            <th>faculdade</th>
-            <th>curso</th>
+            <th>Sobrenome</th>
+            <th>Faculdade</th>
+            <th>Curso</th>
             <th>Periodo</th>
             <th>Ações</th>
           </tr>
@@ -41,7 +54,7 @@ export default function page() {
           {alunos.map(aluno => {
             return (
               <tr>
-                <td><img src={aluno.foto} width={40}/></td>
+                <td><img src={aluno.foto} width={60} height={90} /></td>
                 <td>{aluno.matricula}</td>
                 <td>{aluno.nome}</td>
                 <td>{aluno.sobrenome}</td>

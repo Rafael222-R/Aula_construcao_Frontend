@@ -1,6 +1,7 @@
 'use client'
 import Pagina from '@/components/Pagina'
 import { Formik } from 'formik'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 import { Form, Row, Col, Button } from 'react-bootstrap'
 import { FaTrash,FaArrowLeft,FaCheck } from 'react-icons/fa'
@@ -9,6 +10,8 @@ import * as Yup from 'yup'
 
 export default function alunosFormPage(props) {
 
+
+    const router = useRouter()
 
     const faculdades = JSON.parse(localStorage.getItem('faculdades')) || []
 
@@ -45,7 +48,7 @@ export default function alunosFormPage(props) {
 
     const initialValues = {
         nome: '',
-        sorenome: '',
+        sobrenome: '',
         email: '',
         dataNascimento: '',
         telefone: '',
@@ -63,6 +66,7 @@ export default function alunosFormPage(props) {
         email: Yup.string().email('Email é obrigatorio').required("Campo obrigatório"),
         dataNascimento: Yup.string().required("Campo obrigatório"),
         telefone: Yup.string().required("Campo obrigatório"),
+        faculdade: Yup.string().required("Campo obrigatório"),
         curso: Yup.string().required("Campo obrigatório"),
         periodo: Yup.string().required("Campo obrigatório"),
         matricula: Yup.string().required("Campo obrigatório"),
@@ -71,16 +75,13 @@ export default function alunosFormPage(props) {
     return (
         <Pagina titulo={'Cadastro de Aluno'}>
 
-
-
-
             <Formik
 
-                initialValues={initialValues}
+                initialValues={alunoEditado || initialValues}
+                validationSchema={validationSchema}
                 onSubmit={salvar}
 
             >
-
                 {
 
                     ({ values, errors, touched, handleChange, handleBlur, handleSubmit, handleReset }) => {
