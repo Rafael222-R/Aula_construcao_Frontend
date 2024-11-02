@@ -174,15 +174,25 @@ export default function disciplinasFormPage(props) {
 
                                 </Row>
 
-                                
 
-                                    <Form.Group className='text-end'>
-                                        <Button className='me-2' variant='secondary' href='/disciplinas'> <FaArrowLeft /> Voltar</Button>
-                                        <Button  className='text-end me-2' onClick={handleReset}> <FaTrash /> Limpar</Button>
-                                        <Button className='text-end me-2'type='submit' variant='success'> <FaCheck /> Enviar</Button>
-                                    </Form.Group>
 
-                                
+                                <Form.Group as={Row} className="mb-3">
+                                    <Col xs="auto">
+                                        <Button variant="secondary" href="/disciplinas">
+                                            <FaArrowLeft /> Voltar
+                                        </Button>
+                                    </Col>
+                                    <Col className="text-end">
+                                        <Button className="me-2" onClick={handleReset} variant="primary">
+                                            <FaTrash /> Limpar
+                                        </Button>
+                                        <Button type="submit" variant="success">
+                                            <FaCheck /> Enviar
+                                        </Button>
+                                    </Col>
+                                </Form.Group>
+
+
 
 
                             </Form>
