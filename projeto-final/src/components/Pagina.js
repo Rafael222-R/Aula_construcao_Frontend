@@ -6,12 +6,9 @@ export default function Pagina({ titulo, children }) {
     return (
 
         <>
-
-
-
             <Navbar bg="primary" data-bs-theme="dark" className="bg-body-tertiary">
                 <Container fluid>
-                    <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+                    <Navbar.Brand href="#">Pagina Inicial</Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav
@@ -19,8 +16,8 @@ export default function Pagina({ titulo, children }) {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Nav.Link href="#action1">Home</Nav.Link>
-                            <Nav.Link href="#action2">Link</Nav.Link>
+                            <Nav.Link href="/">Home</Nav.Link>
+                            <Nav.Link href="/cargos">Cargo</Nav.Link>
                             <NavDropdown title="Link" id="navbarScrollingDropdown">
                                 <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
                                 <NavDropdown.Item href="#action4">
@@ -48,14 +45,14 @@ export default function Pagina({ titulo, children }) {
                 </Container>
             </Navbar>
 
-            <div>
-                {titulo}
+            <div className="bg-secondary text-center text-white py-2">
+               <h1> {titulo} </h1>
             </div>
 
-            <Container>
+            <Container className='mt-2 '>
                 {children}
-
             </Container>
+
 
 
         </>

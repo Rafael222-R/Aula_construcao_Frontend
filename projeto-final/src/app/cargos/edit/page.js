@@ -2,13 +2,16 @@
 import Pagina from '@/components/Pagina'
 import axios from 'axios';
 import { Formik } from 'formik'
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap'
 import { FaArrowLeft, FaCheck } from "react-icons/fa"
 import { v4 } from 'uuid'
 import * as Yup from 'yup'
 
-export default function CursoFormPage(props) {
+export default function CargosEditPage(props) {
+
+  const router = useRouter()
 
     console.log(props.searchParams._id)
     const id = props.searchParams._id
@@ -22,6 +25,11 @@ export default function CursoFormPage(props) {
         .catch(err => {
             console.log(err)
         } )
+
+
+    alert("Cargo Editado com Sucesso!")
+    router.push('/cargos')
+
     }
  
   // Campos do form e valores iniciais(default)
@@ -172,7 +180,7 @@ export default function CursoFormPage(props) {
 
                 {/* botões */}
                 <Form.Group className='text-end'>
-                  <Button className='me-2' href='/'><FaArrowLeft /> Voltar</Button>
+                  <Button className='me-2' href='/cargos'><FaArrowLeft /> Voltar</Button>
                   <Button type='submit' variant='success'><FaCheck /> Enviar</Button>
                 </Form.Group>
 
