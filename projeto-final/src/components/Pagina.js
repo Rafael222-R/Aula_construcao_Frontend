@@ -16,7 +16,7 @@ export default function Pagina({ titulo, children }) {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Nav.Link href="/">Home</Nav.Link>
+                            <Nav.Link href="/produtos">Produtos</Nav.Link>
                             <Nav.Link href="/cargos">Cargo</Nav.Link>
                             <NavDropdown title="Link" id="navbarScrollingDropdown">
                                 <NavDropdown.Item href="#action3">Action</NavDropdown.Item>

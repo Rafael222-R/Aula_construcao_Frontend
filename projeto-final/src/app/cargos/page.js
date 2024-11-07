@@ -10,11 +10,8 @@ import { Router } from 'next/router';
 
 export default function cargoPage(props) {
 
-    const router = useRouter()
-
 
     const [cargos, setCargos] = useState([]);
-
 
 
     useEffect(() => {

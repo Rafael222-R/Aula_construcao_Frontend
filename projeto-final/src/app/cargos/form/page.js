@@ -124,6 +124,7 @@ export default function CargosFormPage(props) {
                     <Form.Control
                       name='salario'
                       type='text'
+                      min={1412}
                       value={values.salario}
                       onChange={handleChange}
                       onBlur={handleBlur}
