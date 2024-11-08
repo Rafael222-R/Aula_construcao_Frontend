@@ -3,20 +3,23 @@ import Pagina from '@/components/Pagina'
 import axios from 'axios'
 import { Formik } from 'formik'
 import { useRouter } from 'next/navigation'
-
 import { Form, Row, Col, Button } from 'react-bootstrap'
 import { FaArrowLeft, FaCheck } from "react-icons/fa"
 import * as Yup from 'yup'
 import { useEffect } from 'react'
 
-export default function ProdutosformPage() {
+export default function ProdutosformPage(props) {
 
     
     const router = useRouter()
 
+    console.log(props.searchParams.id)
+    const id = props.searchParams.id
+
+
     function salvar(dados) {
         console.log(dados)
-        axios.post('http://localhost:3000/produtos', dados)
+        axios.put('http://localhost:3000/produtos/' + id, dados)
             .then(res => {
                 console.log(res)
             })
@@ -24,10 +27,12 @@ export default function ProdutosformPage() {
                 console.log(err)
             })
 
-        alert('Produto Criado com Sucesso!')
+
+        alert("Produto Editado com Sucesso!")
         router.push('/produtos')
 
     }
+
 
     const initialValues = {
         nome: '',
@@ -75,6 +80,16 @@ export default function ProdutosformPage() {
                     ({ values, errors, touched, handleChange, handleBlur, handleSubmit, handleReset, setValues }) => {
 
 
+                        useEffect(() => {
+                            axios.get('http://localhost:3000/produtos/' + id)
+                                .then(res => {
+                                    console.log(res)
+                                    setValues(res.data)
+                                })
+                                .catch(err => {
+                                    console.log(err)
+                                })
+                        }, [])
 
                         return (
 

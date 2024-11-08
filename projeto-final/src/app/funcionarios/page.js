@@ -1,0 +1,71 @@
+'use client'
+import Pagina from '@/components/Pagina'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+import { Button,Table    } from 'react-bootstrap'
+import { FaPlusCircle,FaPen } from 'react-icons/fa'
+
+
+export default function funcionariosPage(props) {
+
+    console.log(props)
+
+const [funcionarios, setFuncionarios]= useState([])
+
+
+useEffect(() =>{
+    axios.get('http://localhost:3000/funcionarios')
+    .then(res =>{
+        console.log(res.data)
+        setFuncionarios(res.data)
+        
+    })
+    .catch(err =>{
+        console.log(err)
+    })
+},[])
+
+  return (
+    <Pagina titulo={'Funcionario'}>
+
+        <div className='text-end mb-2'> 
+            <Button href='/funcionarios/form'><FaPlusCircle/> Novo</Button>
+        </div>
+
+        <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>cpf</th>
+            <th>email</th>
+            <th>telefone</th>
+            <th>genero</th>
+            <th>Ações</th>
+        
+          </tr>
+        </thead>
+        <tbody>
+          {funcionarios.map(funcionario => {
+            return (
+              <tr>
+                <td>{funcionario.nome}</td>
+                <td>{funcionario.cpf}</td>
+                <td>{funcionario.email}</td>
+                <td>{funcionario.telefone} </td>
+                <td>{funcionario.genero}</td>
+                <td className='text-center'>
+                  {/* Botões das ações */}
+                  <Button className='me-2' href={`/funcionarios/edit?_id=${funcionario._id}`}><FaPen /></Button> 
+                  {/* <Button variant='danger' onClick={() => excluir(produto)}><FaTrash /></Button> */}
+                </td>
+              </tr>
+            )
+          })}
+        </tbody>
+      </Table>
+
+
+
+    </Pagina>
+  )
+}

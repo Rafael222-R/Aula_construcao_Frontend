@@ -18,6 +18,25 @@ useEffect(() => {
     })
 }, [])
 
+function excluir(produto) {
+  if (window.confirm(`Deseja realmente excluir ${produto.nome}`)) {
+      axios.delete(`http://localhost:3000/produtos/${produto._id}`)
+          .then(() => {
+              alert("produto excluído com sucesso!");
+
+              // Atualiza a lista de produto após exclusão
+              axios.get('http://localhost:3000/produtos')
+                  .then(res => {
+                    setProdutos (res.data);  // Atualiza a lista de produto no estado
+                  })
+                  .catch(err => {
+                      console.error("Erro ao atualizar a lista:", err);
+                  });
+        
+          })
+  }
+}
+
 
   return (
     <Pagina titulo={'Produtos'}>
@@ -45,12 +64,12 @@ useEffect(() => {
                 <td>{produto.nome}</td>
                 <td>{produto.descricao}</td>
                 <td>{produto.codigo_barras}</td>
-                <td>{produto.peso}</td>
-                <td>{produto.preco}</td>
+                <td>{produto.peso} Kg</td>
+                <td>R$ {produto.preco}</td>
                 <td className='text-center'>
                   {/* Botões das ações */}
-                  <Button className='me-2' href={`/cursos/form?id=${produto.id}`}><FaPen /></Button>
-                  {/* <Button variant='danger' onClick={() => excluir(produto)}><FaTrash /></Button> */}
+                  <Button className='me-2' href={`/produtos/edit?id=${produto._id}`}><FaPen /></Button>
+                  <Button variant='danger' onClick={() => excluir(produto)}><FaTrash /></Button>
                 </td>
               </tr>
             )

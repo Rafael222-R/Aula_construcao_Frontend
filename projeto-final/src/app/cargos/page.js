@@ -46,12 +46,6 @@ export default function cargoPage(props) {
                         });
               
                 })
-
-
-
-
-
-
         }
 
 
