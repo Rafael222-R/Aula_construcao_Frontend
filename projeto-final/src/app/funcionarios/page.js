@@ -40,6 +40,7 @@ useEffect(() =>{
             <th>email</th>
             <th>telefone</th>
             <th>genero</th>
+            <th>Cargo</th>
             <th>Ações</th>
         
           </tr>
@@ -53,6 +54,7 @@ useEffect(() =>{
                 <td>{funcionario.email}</td>
                 <td>{funcionario.telefone} </td>
                 <td>{funcionario.genero}</td>
+                <td>{funcionario?.cargo?.nome}</td>
                 <td className='text-center'>
                   {/* Botões das ações */}
                   <Button className='me-2' href={`/funcionarios/edit?_id=${funcionario._id}`}><FaPen /></Button> 

@@ -26,8 +26,7 @@ const schema = yup.object().shape(
             .required("Campo obrigatório"),
         cargo: yup
             .string("Campo precisa ser um texto"),
-        departamento: yup
-            .string("Campo precisa ser um texto"),
+      
     }
 )
 
