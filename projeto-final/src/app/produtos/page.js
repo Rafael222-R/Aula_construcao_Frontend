@@ -16,6 +16,10 @@ useEffect(() => {
       console.log(res.data)
       setProdutos(res.data)
     })
+    .catch(err =>{
+      console.log(err)
+    })
+
 }, [])
 
 function excluir(produto) {
@@ -50,7 +54,7 @@ function excluir(produto) {
           <tr>
             <th>Nome</th>
             <th>Descricao</th>
-            <th>codigo_barras</th>
+            <th>Codigo de Barras</th>
             <th>peso</th>
             <th>preco</th>
             <th>Ações</th>

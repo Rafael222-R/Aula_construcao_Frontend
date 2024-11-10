@@ -7,6 +7,7 @@ import { Form, Row, Col, Button } from 'react-bootstrap'
 import { FaArrowLeft, FaCheck } from "react-icons/fa"
 import * as Yup from 'yup'
 import { useEffect } from 'react'
+import ReactInputMask from 'react-input-mask'
 
 export default function ProdutosformPage(props) {
 
@@ -40,10 +41,9 @@ export default function ProdutosformPage(props) {
         codigo_barras: '',
         peso: '',
         preco: '',
-        // quantEstoque: '',
-        // fabricante: '', 
-        // dataValidade: '',
-        // foto: ''
+        categoria: '',
+        fabricante: '',
+        foto: ''
 
     }
 
@@ -52,7 +52,8 @@ export default function ProdutosformPage(props) {
             .string("Campo nome precisa ser um texto")
             .required("Campo nome é Obrigatorio"),
         descricao: Yup
-            .string("Campo nome precisa ser um texto"),
+            .string("Campo nome precisa ser um texto")
+            .required("Campo nome é Obrigatorio"),
         codigo_barras: Yup
             .string("Campo nome precisa ser um texto")
             .min(12, "O codigo de Barras deve conter no minimo 12 digitos")
@@ -62,13 +63,21 @@ export default function ProdutosformPage(props) {
             .required("Campo peso é Obrigatorio"),
         preco: Yup
             .number("Campo salario precisa ser numerico")
-            .required("Campo Preço  é Obrigatorio")
+            .required("Campo peso é Obrigatorio"),
+        categoria: Yup
+            .string("Campo nome precisa ser um texto")
+            .required("Campo nome é Obrigatorio"),
+        fabricante: Yup
+            .string("Campo nome precisa ser um texto")
+            .required("Campo nome é Obrigatorio"),
+        foto: Yup
+            .string("Campo nome precisa ser um texto")
+            .required("Campo nome é Obrigatorio"),
 
     })
 
-
     return (
-        <Pagina titulo={'Cadastro de Produtos'}>
+        <Pagina titulo={'Edição de Produtos'}>
 
             <Formik
 
@@ -128,10 +137,11 @@ export default function ProdutosformPage(props) {
 
                                 <Row className='mb-2'>
                                     <Form.Group as={Col}>
-                                        <Form.Label>codigo_barras:</Form.Label>
-                                        <Form.Control
-                                            name='codigo_barras'
-                                            type='number'
+                                        <Form.Label>Codigo de Barras:</Form.Label>
+                                        <Form.Control as={ReactInputMask}
+                                            mask={'999999999999'}
+                                            placeholder='999999999999'
+                                            name='codigo_barras'                                          
                                             min={12}
                                             value={values.codigo_barras}
                                             onChange={handleChange}
@@ -144,7 +154,9 @@ export default function ProdutosformPage(props) {
 
                                     <Form.Group as={Col}>
                                         <Form.Label>Peso:</Form.Label>
-                                        <Form.Control
+                                        <Form.Control as={ReactInputMask}
+                                            mask={'99.99'}
+                                            placeholder='99.99'
                                             name='peso'
                                             type='text'
                                             value={values.peso}
@@ -156,12 +168,11 @@ export default function ProdutosformPage(props) {
                                         <Form.Control.Feedback type='invalid'>{errors.peso}</Form.Control.Feedback>
                                     </Form.Group>
 
-                                </Row>
-
-                                <Row className='mb-2'>
                                     <Form.Group as={Col}>
                                         <Form.Label>Preço:</Form.Label>
-                                        <Form.Control
+                                        <Form.Control as={ReactInputMask}
+                                            mask={'99.99'}
+                                            placeholder='99.99'
                                             name='preco'
                                             type='text'
                                             value={values.preco}
@@ -173,23 +184,25 @@ export default function ProdutosformPage(props) {
                                         <Form.Control.Feedback type='invalid'>{errors.preco}</Form.Control.Feedback>
                                     </Form.Group>
 
-                                    {/* <Form.Group as={Col}>
-                                        <Form.Label>Quantidade Estoque:</Form.Label>
-                                        <Form.Control
-                                            name='quantEstoque'
-                                            type='number'
-                                            value={values.quantEstoque}
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                            isValid={touched.quantEstoque && !errors.quantEstoque}
-                                            isInvalid={touched.quantEstoque && errors.quantEstoque}
-                                        />
-                                        <Form.Control.Feedback type='invalid'>{errors.quantEstoque}</Form.Control.Feedback>
-                                    </Form.Group> */}
-
                                 </Row>
 
-                                {/* <Row className='mb-2'>
+                                <Row className='mb-2'>
+
+
+                                    <Form.Group as={Col}>
+                                        <Form.Label>Categoria:</Form.Label>
+                                        <Form.Control
+                                            name='categoria'
+                                            type='text'
+                                            value={values.categoria}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            isValid={touched.categoria && !errors.categoria}
+                                            isInvalid={touched.categoria && errors.categoria}
+                                        />
+                                        <Form.Control.Feedback type='invalid'>{errors.categoria}</Form.Control.Feedback>
+                                    </Form.Group>
+
                                     <Form.Group as={Col}>
                                         <Form.Label>Fabricante:</Form.Label>
                                         <Form.Control
@@ -204,19 +217,6 @@ export default function ProdutosformPage(props) {
                                         <Form.Control.Feedback type='invalid'>{errors.fabricante}</Form.Control.Feedback>
                                     </Form.Group>
 
-                                    <Form.Group as={Col}>
-                                        <Form.Label>Data de validade:</Form.Label>
-                                        <Form.Control
-                                            name='datavalidade'
-                                            type='date'
-                                            value={values.datavalidade}
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                            isValid={touched.datavalidade && !errors.datavalidade}
-                                            isInvalid={touched.datavalidade && errors.datavalidade}
-                                        />
-                                        <Form.Control.Feedback type='invalid'>{errors.datavalidade}</Form.Control.Feedback>
-                                    </Form.Group>
 
                                 </Row>
                                 <Row className='mb-2'>
@@ -233,7 +233,7 @@ export default function ProdutosformPage(props) {
                                         />
                                         <Form.Control.Feedback type='invalid'>{errors.foto}</Form.Control.Feedback>
                                     </Form.Group>
-                                </Row> */}
+                                </Row>
 
 
                                 <Form.Group className='text-end'>

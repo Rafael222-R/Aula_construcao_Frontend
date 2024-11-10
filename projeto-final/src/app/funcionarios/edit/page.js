@@ -2,18 +2,26 @@
 import Pagina from '@/components/Pagina'
 import axios from 'axios'
 import { Formik } from 'formik'
+import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { Col, Form, Row, Button } from 'react-bootstrap'
 import { FaCheck, FaArrowLeft } from 'react-icons/fa'
 import * as yup from 'yup'
 
-export default function funcionariosFormPage() {
+export default function funcionarioEditPage(props) {
+
+    console.log(props.searchParams._id)
+    const id = props.searchParams._id
+
+    const router = useRouter()
 
   const [cargos, setCargos] = useState([])
 
+
+
   function salvar(dados) {
     console.log(dados)
-    axios.post('http://localhost:3000/funcionarios', dados)
+    axios.put('http://localhost:3000/funcionarios/'+ id, dados)
       .then(res => {
         console.log(res)
       })
@@ -21,19 +29,20 @@ export default function funcionariosFormPage() {
         console.log(err)
       })
 
+      alert("Funcionario Editado com Sucesso!")
+      router.push('/funcionarios')
+
   }
-
   useEffect(() => {
-
     axios.get('http://localhost:3000/cargos')
-      .then(res => {
+    .then(res =>{
         console.log(res.data)
         setCargos(res.data)
-      })
-      .catch(err => {
+    })
+    .catch(err => {
         console.log(err)
-      })
-  }, [])
+    })
+  },[])
 
 
   const initialValues = {
@@ -96,8 +105,21 @@ export default function funcionariosFormPage() {
         onSubmit={salvar}
       >
         {
-          ({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => {
+          ({ values, errors, touched, handleChange, handleBlur, handleSubmit, setValues }) => {
 
+            useEffect(() => {
+
+                axios.get('http://localhost:3000/funcionarios/' + id)
+                  .then(res => {
+                    console.log(res)
+                    setValues(res.data)
+                  })
+                  .catch(err => {
+                    console.log(err)
+                  })
+              }, [])
+
+              
             return (
 
 

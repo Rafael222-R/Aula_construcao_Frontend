@@ -19,17 +19,17 @@ const schema = new mongoose.Schema(
             ref: 'produto', // Supondo que exista um modelo de Produto
             required: true
         },
-        quantidade: {
-            type: Number,
-            required: true,
-            min: 1
-        }
+        // quantidade: {
+        //     type: Number,
+        //     required: true,
+        //     min: 1
+        // }
     }] ,
 
-   valorTotal: {
-    type: Number,
-    required: true
-   }
+//    valorTotal: {
+//     type: Number,
+//     required: true
+//    }
 
    
 } , {timestamps : true})

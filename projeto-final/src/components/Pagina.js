@@ -19,6 +19,8 @@ export default function Pagina({ titulo, children }) {
                             <Nav.Link href="/produtos">Produtos</Nav.Link>
                             <Nav.Link href="/cargos">Cargo</Nav.Link>
                             <Nav.Link href="/funcionarios">Funcionario</Nav.Link>
+                            <Nav.Link href="/clientes">Clientes</Nav.Link>
+                            <Nav.Link href="/pedido">Pedidos</Nav.Link>
                             <NavDropdown title="Link" id="navbarScrollingDropdown">
                                 <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
                                 <NavDropdown.Item href="#action4">

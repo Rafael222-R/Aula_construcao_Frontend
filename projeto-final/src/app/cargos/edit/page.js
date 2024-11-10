@@ -8,6 +8,7 @@ import { Button, Col, Form, Row } from 'react-bootstrap'
 import { FaArrowLeft, FaCheck } from "react-icons/fa"
 import { v4 } from 'uuid'
 import * as Yup from 'yup'
+import ReactInputMask from 'react-input-mask';
 
 export default function CargosEditPage(props) {
 
@@ -38,7 +39,11 @@ export default function CargosEditPage(props) {
     descricao: '',
     salario: '',
     habilidade: "",
-    status_cargo: ""
+    status_cargo: "",
+    departamento:'',
+    nivel_hierarquico:'',
+    data_criacao:'',
+
   }
 
   // Esquema de validação com Yup
@@ -47,19 +52,30 @@ export default function CargosEditPage(props) {
     .string("Campo nome precisa ser um texto")
     .required( "Campo nome é Obrigatorio"),
     descricao: Yup
-    .string("Campo nome precisa ser um texto"),
+    .string("Campo nome precisa ser um texto")
+    .required( "Campo nome é Obrigatorio"),
     salario: Yup
-    .number("Campo salario precisa ser numerico")
-    .min(1412, "Compo salario precisa ser maior que o salario minimo")
+    .string("Campo salario precisa ser numerico")
     .required("Campo Salario é Obrigatorio"),
     habilidade: Yup
-    .string("Campo nome precisa ser um texto"),
+    .string("Campo nome precisa ser um texto")
+    .required( "Campo nome é Obrigatorio"),
     status_cargo: Yup
     .string("Campo nome precisa ser um texto")
+    .required( "Campo nome é Obrigatorio"),
+    departamento: Yup
+    .string("Campo nome precisa ser um texto")
+    .required( "Campo nome é Obrigatorio"),
+    nivel_hierarquico: Yup
+    .string("Campo nome precisa ser um texto")
+    .required( "Campo nome é Obrigatorio"),
+    data_criacao: Yup
+    .date("Data Inválida")
+    .required( "Campo nome é Obrigatorio"),
   })
 
   return (
-    <Pagina titulo={"Cadastro de Curso"}>
+    <Pagina titulo={"Edição de Cargo "}>
 
       {/* Formulário */}    
 
@@ -98,7 +114,7 @@ export default function CargosEditPage(props) {
                 {/* Campos do form */}
                 <Row className='mb-2'>
                   <Form.Group as={Col}>
-                    <Form.Label>Nome:</Form.Label>
+                    <Form.Label>Nome do cargo:</Form.Label>
                     <Form.Control
                       name='nome'
                       type='text'
@@ -112,7 +128,7 @@ export default function CargosEditPage(props) {
                   </Form.Group>
 
                   <Form.Group as={Col}>
-                    <Form.Label>Descricao:</Form.Label>
+                    <Form.Label>Descrição do cargo:</Form.Label>
                     <Form.Control
                       name='descricao'
                       type='text'
@@ -128,8 +144,10 @@ export default function CargosEditPage(props) {
 
                 <Row className='mb-2'>
                 <Form.Group as={Col}>
-                    <Form.Label>salario:</Form.Label>
-                    <Form.Control
+                    <Form.Label>Salário do cargo:</Form.Label>
+                    <Form.Control as={ReactInputMask}
+                    mask={'R$ 9999'}
+                    placeholder='R$ 1500'
                       name='salario'
                       type='text'
                       value={values.salario}
@@ -142,7 +160,7 @@ export default function CargosEditPage(props) {
                   </Form.Group>
 
                   <Form.Group as={Col}>
-                    <Form.Label>habilidade:</Form.Label>
+                    <Form.Label>Habilidade necessária para o cargo:</Form.Label>
                     <Form.Control
                       name='habilidade'
                       type='text'
@@ -158,7 +176,7 @@ export default function CargosEditPage(props) {
 
                 <Row className='mb-2'>
                   <Form.Group as={Col}>
-                    <Form.Label>status_cargo:</Form.Label>
+                    <Form.Label>Status do cargo:</Form.Label>
                     <Form.Select
                       name='status_cargo'
                       value={values.status_cargo}
@@ -174,7 +192,55 @@ export default function CargosEditPage(props) {
                     <Form.Control.Feedback type='invalid'>{errors.status_cargo}</Form.Control.Feedback>
                   </Form.Group>
 
-                  
+                  <Form.Group as={Col}>
+                    <Form.Label>Nivel Hierarquico:</Form.Label>
+                    <Form.Select
+                      name='nivel_hierarquico'
+                      value={values.nivel_hierarquico}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isValid={touched.nivel_hierarquico && !errors.nivel_hierarquico}
+                      isInvalid={touched.nivel_hierarquico && errors.nivel_hierarquico}
+                    >
+                      <option value=''>Selecione</option>
+                      <option value="Jénior">Jénior</option>
+                      <option value="Pleno">Pleno</option>
+                      <option value="Sênior">Sênior</option>
+                    </Form.Select>
+                    <Form.Control.Feedback type='invalid'>{errors.nivel_hierarquico}</Form.Control.Feedback>
+                  </Form.Group>
+
+                </Row>
+
+                <Row className='mb-2'>
+                <Form.Group as={Col}>
+                    <Form.Label>Departamento:</Form.Label>
+                    <Form.Control
+                      name='departamento'
+                      type='text'
+                      min={1412}
+                      value={values.departamento}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isValid={touched.departamento && !errors.departamento}
+                      isInvalid={touched.departamento && errors.departamento}
+                    />
+                    <Form.Control.Feedback type='invalid'>{errors.departamento}</Form.Control.Feedback>
+                  </Form.Group>
+
+                  <Form.Group as={Col}>
+                    <Form.Label>Data de Criação:</Form.Label>
+                    <Form.Control
+                      name='data_criacao'
+                      type='date'
+                      value={values.data_criacao}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isValid={touched.data_criacao && !errors.data_criacao}
+                      isInvalid={touched.data_criacao && errors.data_criacao}
+                    />
+                    <Form.Control.Feedback type='invalid'>{errors.data_criacao}</Form.Control.Feedback>
+                  </Form.Group>
                 </Row>
 
 

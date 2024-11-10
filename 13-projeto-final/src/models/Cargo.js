@@ -7,15 +7,15 @@ const schema = new mongoose.Schema({
     },
     descricao: {
         type: String,
-        require: false
+        require: true
     },
     salario: {
-        type: Number,
+        type: String,
         required: true
     },
     habilidade:{
         type: String,
-        require: false
+        require: true
     },
     status_cargo: {
 

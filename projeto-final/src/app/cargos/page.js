@@ -21,11 +21,11 @@ export default function cargoPage(props) {
             .then(res => {
                 console.log(res.data)
                 setCargos(res.data)
-
-
             })
             // catch manipular o error
-            .catch()
+            .catch(err => {
+                console.log(err)
+            })
 
 
     }, []);
@@ -66,8 +66,9 @@ export default function cargoPage(props) {
                     <thead>
                         <tr>
                             <th>Nome</th>
-                            <th>id</th>
-                            <th>Acçoes</th>
+                            <th>Descricao</th>
+                            <th>habilidade</th>
+                            <th>Açoes</th>
 
 
 
@@ -78,7 +79,8 @@ export default function cargoPage(props) {
                             return (
                                 <tr>
                                     <td>{cargo.nome}</td>
-                                    <td>{cargo._id}</td>
+                                    <td>{cargo.descricao}</td>
+                                    <td>{cargo.habilidade}</td>
                                     <td className='text-center'>
                                         {/* Botões das ações */}
                                         <Button className='me-2' href={`/cargos/edit?_id=${cargo._id}`}><FaPen /></Button>

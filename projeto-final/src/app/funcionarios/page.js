@@ -3,7 +3,7 @@ import Pagina from '@/components/Pagina'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Button,Table    } from 'react-bootstrap'
-import { FaPlusCircle,FaPen } from 'react-icons/fa'
+import { FaPlusCircle,FaPen,FaTrash} from 'react-icons/fa'
 
 
 export default function funcionariosPage(props) {
@@ -25,6 +25,27 @@ useEffect(() =>{
     })
 },[])
 
+
+function excluir(funcionario) {
+
+  if (window.confirm(`Deseja realmente excluir ${funcionario.nome}`)) {
+    axios.delete(`http://localhost:3000/funcionarios/${funcionario._id}`)
+        .then(() => {
+            alert("Cargo excluído com sucesso!");
+
+            // Atualiza a lista de cargos após exclusão
+            axios.get('http://localhost:3000/funcionarios')
+                .then(res => {
+                    setFuncionarios(res.data);  // Atualiza a lista de cargos no estado
+                })
+                .catch(err => {
+                    console.error("Erro ao atualizar a lista:", err);
+                });
+      
+        })
+}
+  
+}
   return (
     <Pagina titulo={'Funcionario'}>
 
@@ -58,7 +79,7 @@ useEffect(() =>{
                 <td className='text-center'>
                   {/* Botões das ações */}
                   <Button className='me-2' href={`/funcionarios/edit?_id=${funcionario._id}`}><FaPen /></Button> 
-                  {/* <Button variant='danger' onClick={() => excluir(produto)}><FaTrash /></Button> */}
+                  <Button variant='danger' onClick={() => excluir(funcionario)}><FaTrash /></Button>
                 </td>
               </tr>
             )

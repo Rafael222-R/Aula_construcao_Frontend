@@ -7,15 +7,17 @@ const schema = yup.object().shape(
         .string("Campo nome precisa ser um texto")
         .required( "Campo nome é Obrigatorio"),
         descricao: yup
-        .string("Campo nome precisa ser um texto"),
+        .string("Campo nome precisa ser um texto")
+        .required( "Campo nome é Obrigatorio"),
         salario: yup
-        .number("Campo salario precisa ser numerico")
-        .min(1412, "Compo salario precisa ser maior que o salario minimo")
+        .string("Campo salario precisa ser numerico")
         .required("Campo Salario é Obrigatorio"),
         habilidade: yup
-        .string("Campo nome precisa ser um texto"),
+        .string("Campo nome precisa ser um texto")
+        .required( "Campo nome é Obrigatorio"),
         status_cargo: yup
         .string("Campo nome precisa ser um texto")
+        .required( "Campo nome é Obrigatorio"),
 
     }
 )
