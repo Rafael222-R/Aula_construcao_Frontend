@@ -52,6 +52,8 @@ function excluir(produto) {
 <Table striped bordered hover>
         <thead>
           <tr>
+            
+            <th>Foto</th>
             <th>Nome</th>
             <th>Descricao</th>
             <th>Codigo de Barras</th>
@@ -65,6 +67,7 @@ function excluir(produto) {
           {produtos.map(produto => {
             return (
               <tr>
+                <td><img src={produto.foto}width={60} height={90}/></td>
                 <td>{produto.nome}</td>
                 <td>{produto.descricao}</td>
                 <td>{produto.codigo_barras}</td>

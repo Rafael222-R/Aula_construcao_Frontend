@@ -22,6 +22,18 @@ const schema = new mongoose.Schema (
     preco : {
         type : Number,
         require: true
+    },
+    categoria : {
+        type : String,
+        require: true
+    },
+    fabricante : {
+        type : String,
+        require: true
+    },
+    foto : {
+        type : String,
+        require: true
     }
 }, { timestamps: true})
 
