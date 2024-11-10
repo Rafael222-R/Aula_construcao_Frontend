@@ -21,6 +21,21 @@ const schema = new mongoose.Schema({
 
         type: String,
         required:true
+    },
+    departamento: {
+
+        type: String,
+        required:true
+    },
+    nivel_hierarquico: {
+
+        type: String,
+        required:true
+    },
+    data_criacao: {
+
+        type: String,
+        required:true
     }
 }, {timestamps: true})
  
