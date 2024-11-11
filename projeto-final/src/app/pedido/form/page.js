@@ -4,7 +4,7 @@ import axios from 'axios'
 import { Formik } from 'formik'
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
-import { Form , Row, Col, Button} from 'react-bootstrap'
+import { Form , Row, Col, Button, Table} from 'react-bootstrap'
 import { FaCheck, FaArrowLeft } from 'react-icons/fa'
 import * as yup from 'yup'
 
@@ -15,6 +15,7 @@ export default function peditoformPage() {
     const [funcionarios, setFuncionarios] = useState([])
     const [clientes, setClientes] = useState([])
     const [produtos, setProdutos] = useState([])
+    const [produtosSelecionados, setProdutosSelecionados] = useState([]); // Para armazenar os produtos do pedido
 
     useEffect(() => {
         axios.get('http://localhost:3000/funcionarios')
@@ -46,6 +47,10 @@ export default function peditoformPage() {
                 console.log(err)
             })
     }, [])
+
+    function adicionarProduto(produto) {
+        setProdutosSelecionados(prevProdutos => [...prevProdutos, produto]);
+    }
 
     function salvar(dados) {
         console.log(dados)
@@ -127,8 +132,47 @@ export default function peditoformPage() {
                                         <Form.Control.Feedback type='invalid'>{errors.cliente}</Form.Control.Feedback>
                                     </Form.Group>
 
-
                                 </Row>
+
+                                <Table striped bordered hover>
+    <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Preço</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {produtos.map(produto => (
+            <tr key={produto._id}>
+                <td>{produto.nome}</td>
+                <td>{produto.preco}</td>
+                <td>
+                    <Button onClick={() => adicionarProduto(produto)}>Adicionar</Button>
+                </td>
+            </tr>
+        ))}
+    </tbody>
+</Table>
+
+<h3>Produtos Selecionados</h3>
+<Table striped bordered hover>
+    <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Preço</th>
+        </tr>
+    </thead>
+    <tbody>
+        {produtosSelecionados.map((produto, index) => (
+            <tr key={index}>
+                <td>{produto.nome}</td>
+                <td>{produto.preco}</td>
+            </tr>
+        ))}
+    </tbody>
+</Table>
+
 
                                 <Form.Group className='text-end'>
                   <Button className='me-2' href='/pedido'><FaArrowLeft /> Voltar</Button>
