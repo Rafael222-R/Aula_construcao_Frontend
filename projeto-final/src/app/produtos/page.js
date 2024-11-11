@@ -57,8 +57,8 @@ function excluir(produto) {
             <th>Nome</th>
             <th>Descricao</th>
             <th>Codigo de Barras</th>
-            <th>peso</th>
-            <th>preco</th>
+            <th>Peso</th>
+            <th>Preço</th>
             <th>Ações</th>
         
           </tr>
@@ -73,7 +73,7 @@ function excluir(produto) {
                 <td>{produto.codigo_barras}</td>
                 <td>{produto.peso} Kg</td>
                 <td>R$ {produto.preco}</td>
-                <td className='text-center'>
+                <td className='text-center '>
                   {/* Botões das ações */}
                   <Button className='me-2' href={`/produtos/edit?id=${produto._id}`}><FaPen /></Button>
                   <Button variant='danger' onClick={() => excluir(produto)}><FaTrash /></Button>

@@ -43,7 +43,12 @@ const schema = new mongoose.Schema(
             type: mongoose.Types.ObjectId,
             ref: 'cargo',
             required: false
+        },
+        foto: {
+            type: String,
+            required: true
         }
+        
     
     },
      { timestamps: true} )

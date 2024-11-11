@@ -67,7 +67,7 @@ export default function cargoPage(props) {
                         <tr>
                             <th>Nome</th>
                             <th>Descricao</th>
-                            <th>habilidade</th>
+                            <th>Habilidade</th>
                             <th>Açoes</th>
 
 

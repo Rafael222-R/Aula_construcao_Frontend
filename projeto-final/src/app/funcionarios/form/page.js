@@ -5,6 +5,7 @@ import { Formik } from 'formik'
 import React, { useEffect, useState } from 'react'
 import { Col, Form, Row, Button } from 'react-bootstrap'
 import { FaCheck, FaArrowLeft } from 'react-icons/fa'
+import ReactInputMask from 'react-input-mask'
 import * as yup from 'yup'
 
 export default function funcionariosFormPage() {
@@ -51,9 +52,10 @@ export default function funcionariosFormPage() {
       bairro: '',
       logradouro: '',
       numero: '',
-      complemento: ''
+      complemento: '',
     },
     cargo: '',
+    foto:''
 
   }
 
@@ -81,7 +83,35 @@ export default function funcionariosFormPage() {
       .string("Campo precisa ser um texto")
       .required("Campo obrigatório"),
     cargo: yup
-      .string("Campo precisa ser um texto"),
+      .string("Campo precisa ser um texto")
+      .required("Campo obrigatório"),
+    foto: yup
+      .string("Campo precisa ser um texto")
+      .required("Campo obrigatório"),
+      endereco: yup.object().shape({
+        cep: yup
+        .string("Campo precisa ser um texto")
+        .required("Campo obrigatório"),
+        uf: yup
+        .string("Campo precisa ser um texto")
+        .required("Campo obrigatório"),
+        localidade: yup
+        .string("Campo precisa ser um texto")
+        .required("Campo obrigatório"),
+        bairro: yup
+        .string("Campo precisa ser um texto")
+        .required("Campo obrigatório"),
+        logradouro:yup
+        .string("Campo precisa ser um texto")
+        .required("Campo obrigatório"),
+        numero:yup
+        .string("Campo precisa ser um texto")
+        .required("Campo obrigatório"),
+        complemento:yup
+        .string("Campo precisa ser um texto")
+        .required("Campo obrigatório"),
+
+      })
 
   })
 
@@ -125,7 +155,9 @@ export default function funcionariosFormPage() {
 
                   <Form.Group as={Col}>
                     <Form.Label>CPF:</Form.Label>
-                    <Form.Control
+                    <Form.Control as={ReactInputMask}
+                    mask={"999.999.999-99"}
+                    placeholder='999.999.999-99'
                       name='cpf'
                       type='text'
                       value={values.cpf}
@@ -136,6 +168,23 @@ export default function funcionariosFormPage() {
                     />
                     <Form.Control.Feedback type='invalid'>{errors.cpf}</Form.Control.Feedback>
                   </Form.Group>
+
+                  <Form.Group as={Col}>
+                    <Form.Label>Telefone:</Form.Label>
+                    <Form.Control as={ReactInputMask}
+                    mask={"(99) 9 9999-9999"}
+                    placeholder='(99) 9 9999-9999'
+                      name='telefone'
+                      type='text'
+                      value={values.telefone}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isValid={touched.telefone && !errors.telefone}
+                      isInvalid={touched.telefone && !!errors.telefone}
+                    />
+                    <Form.Control.Feedback type='invalid'>{errors.telefone}</Form.Control.Feedback>
+                  </Form.Group>
+                  
                 </Row>
 
                 <Row className='mb-2'>
@@ -154,22 +203,6 @@ export default function funcionariosFormPage() {
                   </Form.Group>
 
                   <Form.Group as={Col}>
-                    <Form.Label>Telefone:</Form.Label>
-                    <Form.Control
-                      name='telefone'
-                      type='text'
-                      value={values.telefone}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={touched.telefone && !errors.telefone}
-                      isInvalid={touched.telefone && !!errors.telefone}
-                    />
-                    <Form.Control.Feedback type='invalid'>{errors.telefone}</Form.Control.Feedback>
-                  </Form.Group>
-                </Row>
-
-                <Row className='mb-2'>
-                  <Form.Group as={Col}>
                     <Form.Label>Genero</Form.Label>
                     <Form.Select
                       name='genero'
@@ -186,8 +219,11 @@ export default function funcionariosFormPage() {
                     </Form.Select>
                     <Form.Control.Feedback type='invalid'>{errors.genero}</Form.Control.Feedback>
                   </Form.Group>
+
+                  
                 </Row>
 
+                
                 <Row className='mb-2'>
                   <Form.Group as={Col}>
                     <Form.Label>Data de Contratação:</Form.Label>
@@ -237,6 +273,20 @@ export default function funcionariosFormPage() {
                     <Form.Control.Feedback type='invalid'>{errors.cargo}</Form.Control.Feedback>
                   </Form.Group>
 
+                  <Form.Group as={Col}>
+                    <Form.Label>Foto:</Form.Label>
+                    <Form.Control
+                      name='foto'
+                      type='string'
+                      value={values.foto}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isValid={touched.foto && !errors.foto}
+                      isInvalid={touched.foto && !!errors.foto}
+                    />
+                    <Form.Control.Feedback type='invalid'>{errors.foto}</Form.Control.Feedback>
+                  </Form.Group>
+
 
                 </Row>
 
@@ -248,9 +298,39 @@ export default function funcionariosFormPage() {
                 </div>
 
                 <Row className='mb-2'>
+                <Form.Group as={Col}>
+                    <Form.Label>Logradouro:</Form.Label>
+                    <Form.Control
+                      name='endereco.logradouro'
+                      type='text'
+                      value={values?.endereco?.logradouro}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isValid={touched?.endereco?.logradouro && !errors?.endereco?.logradouro}
+                      isInvalid={touched?.endereco?.logradouro && !!errors?.endereco?.logradouro}
+                    />
+                    <Form.Control.Feedback type='invalid'>{errors?.endereco?.logradouro}</Form.Control.Feedback>
+                  </Form.Group>
+
+                  <Form.Group as={Col}>
+                    <Form.Label>Numero:</Form.Label>
+                    <Form.Control
+                      name='endereco.numero'
+                      type='text'
+                      value={values?.endereco?.numero}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      isValid={touched?.endereco?.numero && !errors?.endereco?.numero}
+                      isInvalid={touched?.endereco?.numero && !!errors?.endereco?.numero}
+                    />
+                    <Form.Control.Feedback type='invalid'>{errors?.endereco?.numero}</Form.Control.Feedback>
+                  </Form.Group>
+
                   <Form.Group as={Col}>
                     <Form.Label>CEP:</Form.Label>
-                    <Form.Control
+                    <Form.Control as={ReactInputMask}
+                    mask={"99999-999"}
+                    placeholder='72275-456'
                       name='endereco.cep'
                       type='text'
                       value={values?.endereco?.cep}
@@ -262,19 +342,7 @@ export default function funcionariosFormPage() {
                     <Form.Control.Feedback type='invalid'>{errors?.endereco?.cep}</Form.Control.Feedback>
                   </Form.Group>
 
-                  <Form.Group as={Col}>
-                    <Form.Label>UF:</Form.Label>
-                    <Form.Control
-                      name='endereco.uf'
-                      type='text'
-                      value={values?.endereco?.uf}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={touched?.endereco?.uf && !errors?.endereco?.uf}
-                      isInvalid={touched?.endereco?.uf && !!errors?.endereco?.uf}
-                    />
-                    <Form.Control.Feedback type='invalid'>{errors?.endereco?.uf}</Form.Control.Feedback>
-                  </Form.Group>
+                  
                 </Row>
 
                 <Row className='mb-2'>
@@ -305,38 +373,22 @@ export default function funcionariosFormPage() {
                     />
                     <Form.Control.Feedback type='invalid'>{errors?.endereco?.bairro}</Form.Control.Feedback>
                   </Form.Group>
-                </Row>
-
-                <Row className='mb-2'>
                   <Form.Group as={Col}>
-                    <Form.Label>Logradouro:</Form.Label>
+                    <Form.Label>UF:</Form.Label>
                     <Form.Control
-                      name='endereco.logradouro'
+                      name='endereco.uf'
                       type='text'
-                      value={values?.endereco?.logradouro}
+                      value={values?.endereco?.uf}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      isValid={touched?.endereco?.logradouro && !errors?.endereco?.logradouro}
-                      isInvalid={touched?.endereco?.logradouro && !!errors?.endereco?.logradouro}
+                      isValid={touched?.endereco?.uf && !errors?.endereco?.uf}
+                      isInvalid={touched?.endereco?.uf && !!errors?.endereco?.uf}
                     />
-                    <Form.Control.Feedback type='invalid'>{errors?.endereco?.logradouro}</Form.Control.Feedback>
+                    <Form.Control.Feedback type='invalid'>{errors?.endereco?.uf}</Form.Control.Feedback>
                   </Form.Group>
 
-                  <Form.Group as={Col}>
-                    <Form.Label>Numero:</Form.Label>
-                    <Form.Control
-                      name='endereco.numero'
-                      type='text'
-                      value={values?.endereco?.numero}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      isValid={touched?.endereco?.numero && !errors?.endereco?.numero}
-                      isInvalid={touched?.endereco?.numero && !!errors?.endereco?.numero}
-                    />
-                    <Form.Control.Feedback type='invalid'>{errors?.endereco?.numero}</Form.Control.Feedback>
-                  </Form.Group>
                 </Row>
-
+         
                 <Row className='mb-2'>
                   <Form.Group as={Col}>
                     <Form.Label>Complemento:</Form.Label>

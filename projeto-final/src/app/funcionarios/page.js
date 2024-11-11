@@ -56,11 +56,13 @@ function excluir(funcionario) {
         <Table striped bordered hover>
         <thead>
           <tr>
+            
+            <th>Foto</th>
             <th>Nome</th>
-            <th>cpf</th>
-            <th>email</th>
-            <th>telefone</th>
-            <th>genero</th>
+            <th>CPF</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Genero</th>
             <th>Cargo</th>
             <th>Ações</th>
         
@@ -70,6 +72,7 @@ function excluir(funcionario) {
           {funcionarios.map(funcionario => {
             return (
               <tr>
+                <td><img src={funcionario.foto} width={60} height={90}/></td>
                 <td>{funcionario.nome}</td>
                 <td>{funcionario.cpf}</td>
                 <td>{funcionario.email}</td>
