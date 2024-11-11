@@ -55,7 +55,7 @@ export default function HomePage() {
               </Card.Body>
               <Card.Footer className='text-end'>
                 <Button href={item.link}>Ver Lista</Button>
-              </Card.Footer>
+              </Card.Footer>  
             </Card>
           </Col>
         ))}

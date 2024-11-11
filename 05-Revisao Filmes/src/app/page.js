@@ -1,10 +1,13 @@
+import Pagina from "./components/Pagina";
 
 
 export default function Home() {
   
   return (
-    <> <p>Pagina Inicial</p> 
+   <Pagina>
+
+
     
-    </>
+   </Pagina>
   )
 }

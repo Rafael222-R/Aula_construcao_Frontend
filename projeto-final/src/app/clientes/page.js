@@ -54,9 +54,9 @@ export default function clientesPage() {
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>cpf</th>
-                        <th>email</th>
-                        <th>telefone</th>
+                        <th>CPF</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
                         <th>Ações</th>
 
                     </tr>

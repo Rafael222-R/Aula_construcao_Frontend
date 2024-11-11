@@ -11,7 +11,23 @@ const schema = new mongoose.Schema (
             type: String,
             required: true
         },
+        rg: {
+            type: String,
+            required: true
+        },
         telefone: {
+            type: String,
+            required: true
+        },
+        email: {
+            type: String,
+            required: true
+        },
+        dataNascimento: {
+            type: String,
+            required: true
+        },
+        status_cliente: {
             type: String,
             required: true
         },
@@ -24,10 +40,7 @@ const schema = new mongoose.Schema (
             numero: String,
             complemento: String
         },
-        email: {
-            type: String,
-            required: true
-        }
+       
 
     }, { timestamps: true})   
 

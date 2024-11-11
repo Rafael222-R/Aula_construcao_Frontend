@@ -19,11 +19,11 @@ const schema = new mongoose.Schema(
             required: true
         },
         dataContratacao: {
-            type: Date,
+            type: String,
             required: true
         },
         dataNascimento: {
-            type: Date,
+            type: String,
             required: true
         },
         genero: {

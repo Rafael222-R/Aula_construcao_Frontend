@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import React from 'react'
 import { Form, Row, Col , Button} from 'react-bootstrap'
 import { FaCheck,FaArrowLeft } from 'react-icons/fa'
+import ReactInputMask from 'react-input-mask'
 import * as yup from 'yup'
 
 
@@ -32,7 +33,11 @@ export default function clientesFormPage() {
 
         nome: '',
         cpf: '',
+        rg: '',
         telefone: '',
+        email: '',
+        dataNascimento:'',
+        status_cliente:'',
         endereco: {
             cep: '',
             uf: '',
@@ -41,9 +46,8 @@ export default function clientesFormPage() {
             logradouro: '',
             numero: '',
             complemento: '',
-        },
-        email: ''
-
+        }
+        
     }
 
     const validationSchema = yup.object().shape({
@@ -59,6 +63,36 @@ export default function clientesFormPage() {
             email: yup
             .string("Campo precisa ser um texto")
             .required("Email obrigatório"),
+            dataNascimento: yup
+            .date("Campo precisa ser um texto")
+            .required("Email obrigatório"),
+            status_cliente: yup
+            .string("Campo precisa ser um texto")
+            .required("Email obrigatório"),
+            endereco: yup.object().shape({
+                cep: yup
+                .string("Campo precisa ser um texto")
+                .required("Campo obrigatório"),
+                uf: yup
+                .string("Campo precisa ser um texto")
+                .required("Campo obrigatório"),
+                localidade: yup
+                .string("Campo precisa ser um texto")
+                .required("Campo obrigatório"),
+                bairro: yup
+                .string("Campo precisa ser um texto")
+                .required("Campo obrigatório"),
+                logradouro:yup
+                .string("Campo precisa ser um texto")
+                .required("Campo obrigatório"),
+                numero:yup
+                .string("Campo precisa ser um texto")
+                .required("Campo obrigatório"),
+                complemento:yup
+                .string("Campo precisa ser um texto")
+                .required("Campo obrigatório"),
+        
+              })
     })
 
 
@@ -99,7 +133,9 @@ export default function clientesFormPage() {
 
                                     <Form.Group as={Col}>
                                         <Form.Label>CPF:</Form.Label>
-                                        <Form.Control
+                                        <Form.Control as={ReactInputMask}
+                                        mask={"999.999.999-99"}
+                                        placeholder='999.999.999-99'
                                             name='cpf'
                                             type='text'
                                             value={values.cpf}
@@ -110,6 +146,21 @@ export default function clientesFormPage() {
                                         />
                                         <Form.Control.Feedback type='invalid'>{errors.cpf}</Form.Control.Feedback>
                                     </Form.Group>
+                                    <Form.Group as={Col}>
+                                        <Form.Label>RG:</Form.Label>
+                                        <Form.Control as={ReactInputMask}
+                                        mask={"9.999.999"}
+                                        placeholder='1.234.567'
+                                            name='rg'
+                                            type='text'
+                                            value={values.rg}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            isValid={touched.rg && !errors.rg}
+                                            isInvalid={touched.rg && errors.rg}
+                                        />
+                                        <Form.Control.Feedback type='invalid'>{errors.rg}</Form.Control.Feedback>
+                                    </Form.Group>
 
 
                                 </Row>
@@ -117,7 +168,9 @@ export default function clientesFormPage() {
                                 <Row className='mb-2'>
                                     <Form.Group as={Col}>
                                         <Form.Label>Telefone:</Form.Label>
-                                        <Form.Control
+                                        <Form.Control as={ReactInputMask}
+                                        mask={"(99) 9 9999-9999"}
+                                        placeholder='(61) 9 9999-9999'
                                             name='telefone'
                                             type='text'
                                             value={values.telefone}
@@ -145,6 +198,40 @@ export default function clientesFormPage() {
 
 
                                 </Row>
+                                <Row className='mb-2'>
+                                    <Form.Group as={Col}>
+                                        <Form.Label>Data de Nascimento:</Form.Label>
+                                        <Form.Control
+                                            name='dataNascimento'
+                                            type='date'
+                                            value={values.dataNascimento}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            isValid={touched.dataNascimento && !errors.dataNascimento}
+                                            isInvalid={touched.dataNascimento && errors.dataNascimento}
+                                        />
+                                        <Form.Control.Feedback type='invalid'>{errors.dataNascimento}</Form.Control.Feedback>
+                                    </Form.Group>
+
+                                    <Form.Group as={Col}>
+                                        <Form.Label>Status do cliente:</Form.Label>
+                                        <Form.Select
+                                            name='status_cliente'
+                                            value={values.status_cliente}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            isValid={touched.status_cliente && !errors.status_cliente}
+                                            isInvalid={touched.status_cliente && errors.status_cliente}
+                                            >
+                                                <option value=''>Selecione</option>
+                                                <option value='Ativo'>Ativo</option>
+                                                <option value='Inativo'>Inativo</option>
+                                            </Form.Select>
+                                        <Form.Control.Feedback type='invalid'>{errors.status_cliente}</Form.Control.Feedback>
+                                    </Form.Group>
+
+
+                                </Row>
                                 <div className='text-center mb-2'>  
                                     <h2>Endereço</h2>
                                     <hr/>
@@ -153,7 +240,9 @@ export default function clientesFormPage() {
                                 <Row className='mb-2'>
                                     <Form.Group as={Col}>
                                         <Form.Label>Cep:</Form.Label>
-                                        <Form.Control
+                                        <Form.Control as={ReactInputMask}
+                                        mask={"99999-999"}
+                                        placeholder='99999-999'
                                             name='endereco.cep'
                                             type='text'
                                             value={values?.endereco?.cep}
@@ -215,7 +304,7 @@ export default function clientesFormPage() {
                                 </Row>
                                 <Row className='mb-2'>
                                     <Form.Group as={Col}>
-                                        <Form.Label>logradouro:</Form.Label>
+                                        <Form.Label>Logradouro:</Form.Label>
                                         <Form.Control
                                             name='endereco.logradouro'
                                             type='text'
@@ -229,7 +318,7 @@ export default function clientesFormPage() {
                                     </Form.Group>
 
                                     <Form.Group as={Col}>
-                                        <Form.Label>numero:</Form.Label>
+                                        <Form.Label>Número:</Form.Label>
                                         <Form.Control
                                             name='endereco.numero'
                                             type='text'
@@ -247,7 +336,7 @@ export default function clientesFormPage() {
 
                                 <Row className='mb-2'>
                                     <Form.Group as={Col}>
-                                        <Form.Label>complemento:</Form.Label>
+                                        <Form.Label>Complemento:</Form.Label>
                                         <Form.Control
                                             name='endereco.complemento'
                                             type='text'
