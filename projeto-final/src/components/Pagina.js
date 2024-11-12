@@ -31,13 +31,8 @@ export default function Pagina({ titulo, children }) {
                            
                         </Nav>
                         <Form className="d-flex">
-                            <Form.Control
-                                type="search"
-                                placeholder="Search"
-                                className="me-2"
-                                aria-label="Search"
-                            />
-                            <Button variant="outline-success">Search</Button>
+                            
+                            <Button variant="outline-success" href='/pedido'> Carrinho de Compras</Button>
                         </Form>
                     </Navbar.Collapse>
                 </Container>

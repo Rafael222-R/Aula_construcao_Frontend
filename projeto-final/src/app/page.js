@@ -20,14 +20,10 @@ export default function page() {
 
   }, [])
   return (
-    <Pagina titulo={"Pagina Inicial"}>
+    <Pagina titulo={"Nossos Produtos a Pronta entrega"}>
 
 
-      <div className='text-center'>
-        <h2>Nossos Produtos a Pronta entrega </h2>
-        <hr />
-      </div>
-
+    
       <Row className='mb-2'>
         <Carousel>
 

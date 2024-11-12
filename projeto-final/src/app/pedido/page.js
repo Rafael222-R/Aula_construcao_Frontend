@@ -41,7 +41,7 @@ function excluir(pedido) {
     }
 
   return (
-   <Pagina titulo={'Carrinho de compras'}>
+   <Pagina titulo={'Carrinho de Compras'}>
 
     <div className='text-end mb-2'>
         <Button href='/pedido/form'><FaPlusCircle /> Novo</Button>
@@ -53,7 +53,8 @@ function excluir(pedido) {
            
             <th>Funcionario</th>
              <th>Cliente</th>
-             <th>Ações</th>
+             <th>Total da Compra</th>
+             <th>Editar ou Ecluir</th>
         
           </tr>
         </thead>
@@ -63,6 +64,7 @@ function excluir(pedido) {
               <tr>
                 <td>{pedido?.cliente?.nome}</td>
                 <td>{pedido?.funcionario?.nome}</td>
+                <td>R$ {pedido.total}</td>
                 <td className='text-center'>
                   {/* Botões das ações */}
                   <Button className='me-2' href={`/pedido/edit?id=${pedido._id}`}><FaPen /></Button>
