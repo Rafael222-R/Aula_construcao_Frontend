@@ -29,7 +29,7 @@ function excluir(pedido) {
                 // Atualiza a lista de cargos após exclusão
                 axios.get('http://localhost:3000/pedido')
                     .then(res => {
-                        serPedidos(res.data);  // Atualiza a lista de cargos no estado
+                        setPedidos(res.data);  // Atualiza a lista de cargos no estado
                     })
                     .catch(err => {
                         console.error("Erro ao atualizar a lista:", err);

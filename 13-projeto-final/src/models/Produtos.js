@@ -38,7 +38,7 @@ const schema = new mongoose.Schema (
 }, { timestamps: true})
 
 
-const Produto = mongoose.model('produto', schema)
+const Produto = mongoose.model('Produto', schema)
 
 
 

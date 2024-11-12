@@ -1,96 +1,120 @@
-const Pedido = require('../models/Pedido')
-const Produto = require('../models/Produtos')
-
-
-
+const Pedido = require('../models/Pedido');
+const Produto = require('../models/Produtos');
 
 async function criar(req, res) {
-    
-    const {funcionario, cliente, items } = req.body
-    const pedido = new Pedido( {funcionario, cliente, items })
+    try {
+        const { funcionario, cliente, produtos } = req.body;
 
-    if (pedido.isModified('items')) {
-        let total = 0;
+        // Calcular o valor total do pedido
+        let valorTotal = 0;
 
-        for (const item of pedido.items) {
-            total += item.quantidade * Produto.preco;
+        for (const item of produtos) {
+            const produto = await Produto.findById(item.produto); // Busca o produto pelo ID
+            if (!produto) {
+                return res.status(404).json({ mensagem: "Produto não encontrado!" });
+            }
+            valorTotal += item.quantidade * produto.preco;
         }
 
-        pedido.valorTotal = total;
-    }
+        // Criar o pedido com os dados recebidos
+        const novoPedido = new Pedido({
+            funcionario,
+            cliente,
+            produtos,
+            total: valorTotal,
+        });
 
-    const pedidoCriado = await pedido.save()
-    res.status(201).json(pedidoCriado)
- 
+        const pedidoCriado = await novoPedido.save();
+        res.status(201).json(pedidoCriado);
+    } catch (error) {
+        console.error("Erro ao criar pedido:", error);
+        res.status(500).json({ mensagem: "Erro ao criar o pedido" });
+    }
 }
 
 async function buscarTodos(req, res) {
-    res.json(await Pedido.find() 
-    .populate({
-        path: 'funcionario',
-        select: 'nome'
-    })
-    .populate({
-        path: 'cliente',
-        select: 'nome'  
-    })
-    .populate({
-        path: "items.produto",
-        select: "nome"
-        
-    })
+    try {
+        const pedidos = await Pedido.find()
+            .populate({
+                path: 'funcionario',
+                select: 'nome'
+            })
+            .populate({
+                path: 'cliente',
+                select: 'nome'
+            })
+            .populate({
+                path: "produtos.produto", // Corrigido para "produtos.produto"
+                select: "nome"
+            });
 
-)
-
-}
-
-
-async function buscarPorID(req, res) {
-    const pedido = await Pedido.findById(req.params.id).populate({
-        path: 'funcionario',
-        select: 'nome'  // Seleciona apenas o campo 'nome' do documento 'funcionario'
-    })
-    .populate({
-        path: 'cliente',
-        select: 'nome'  // Seleciona apenas o campo 'nome' do documento 'cliente'
-    }); 
-    if (pedido) {
-        res.json(pedido)
-    } else {
-        res.status(404).json({ mensagem: "Pedido não encontrado!" })
+        res.json(pedidos);
+    } catch (error) {
+        console.error("Erro ao buscar pedidos:", error);
+        res.status(500).json({ mensagem: "Erro ao buscar pedidos" });
     }
 }
 
+async function buscarPorID(req, res) {
+    try {
+        const pedido = await Pedido.findById(req.params.id)
+            .populate({
+                path: 'funcionario',
+                select: 'nome'
+            })
+            .populate({
+                path: 'cliente',
+                select: 'nome'
+            })
+            .populate({
+                path: "produtos.produto",
+                select: "nome"
+            });
+
+        if (pedido) {
+            res.json(pedido);
+        } else {
+            res.status(404).json({ mensagem: "Pedido não encontrado!" });
+        }
+    } catch (error) {
+        console.error("Erro ao buscar pedido:", error);
+        res.status(500).json({ mensagem: "Erro ao buscar pedido" });
+    }
+}
 
 async function atualizar(req, res) {
-    const pedidoAtualizado = await Pedido.findByIdAndUpdate(req.params.id, req.body, { new: true })
-    if (pedidoAtualizado) {
-        res.json(
-            {
+    try {
+        const pedidoAtualizado = await Pedido.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        if (pedidoAtualizado) {
+            res.json({
                 mensagem: "Pedido atualizado com sucesso!",
                 pedidoAtualizado
-            }
-        )
-    } else {
-        res.status(404).json({ mensagem: "Pedido não encontrado!" })
+            });
+        } else {
+            res.status(404).json({ mensagem: "Pedido não encontrado!" });
+        }
+    } catch (error) {
+        console.error("Erro ao atualizar pedido:", error);
+        res.status(500).json({ mensagem: "Erro ao atualizar pedido" });
     }
 }
 
 async function excluir(req, res) {
-    const pedidoExcluido = await Pedido.findByIdAndDelete(req.params.id)
-    if (pedidoExcluido) {
-        res.json(
-            {
-                mensagem: "Funcionario excluido com sucesso!",
+    try {
+        const pedidoExcluido = await Pedido.findByIdAndDelete(req.params.id);
+        if (pedidoExcluido) {
+            res.json({
+                mensagem: "Pedido excluído com sucesso!",
                 pedidoExcluido
-            }
-        )
-    } else {
-        res.status(404).json({ mensagem: "Funcionario não encontrado!" })
+            });
+        } else {
+            res.status(404).json({ mensagem: "Pedido não encontrado!" });
+        }
+    } catch (error) {
+        console.error("Erro ao excluir pedido:", error);
+        res.status(500).json({ mensagem: "Erro ao excluir pedido" });
     }
 }
-
-
 
 module.exports = {
     buscarTodos,
@@ -98,4 +122,4 @@ module.exports = {
     criar,
     atualizar,
     excluir
-}
+};

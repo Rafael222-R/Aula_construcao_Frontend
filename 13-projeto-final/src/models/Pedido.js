@@ -13,19 +13,36 @@ const schema = new mongoose.Schema(
         required: true
     },
   
-    items: [{
+    produtos: [{
         produto: {
-            type: mongoose.Types.ObjectId,
-            ref: 'produto', // Supondo que exista um modelo de Produto
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Produto', // Referência para o modelo Produto
             required: true
         },
+        quantidade: {
+            type: Number,
+            required: true
+        },
+        preco: {
+            type: Number,
+            required: true
+        }
+    }],
+    total: {
+        type: Number,
+        required: true
+    },
+    data: {
+        type: Date,
+        default: Date.now
+    }
+
         // quantidade: {
         //     type: Number,
         //     required: true,
         //     min: 1
         // }
-    }] ,
-
+   
 //    valorTotal: {
 //     type: Number,
 //     required: true
