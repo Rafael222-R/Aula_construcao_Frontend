@@ -32,7 +32,7 @@ export default function Pagina({ titulo, children }) {
                         </Nav>
                         <Form className="d-flex">
                             
-                            <Button variant="outline-success" href='/pedido'> Carrinho de Compras</Button>
+                            <Button variant="outline-success" href='/pedido/form'> Carrinho de Compras</Button>
                         </Form>
                     </Navbar.Collapse>
                 </Container>
